@@ -116,6 +116,23 @@ body {
     margin-bottom: 20px;
 }
 
+/* タイマー枠点滅 */
+.border-blinking {
+    animation: border-blink 1s step-start infinite;
+}
+
+@keyframes border-blink {
+    0% {
+        border-color: black;
+    }
+    50% {
+        border-color: yellow;
+    }
+    100% {
+        border-color: black;
+    }
+}
+
 .timer-controls {
     display: flex;
     gap: 10px;
@@ -167,25 +184,4 @@ body {
     background-color: yellow;
     border: 1px solid #333;
     border-radius: 3px;
-}
-
-/* タイマー点滅 */
-.blinking {
-    animation: blink 1s step-start infinite;
-}
-/* タイマー枠点滅 */
-.border-blinking {
-    animation: border-blink 1s step-start infinite;
-}
-
-@keyframes border-blink {
-    0% {
-        border-color: black;
-    }
-    50% {
-        border-color: yellow;
-    }
-    100% {
-        border-color: black;
-    }
 }
