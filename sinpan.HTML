@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>統合カウンターアプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 赤コーナー -->
+        <div class="corner red-corner">
+            <input type="text" id="red-player" class="player-input red-input" placeholder="赤コーナー プレイヤー名">
+            <div class="counter-display" id="red-counter">0</div>
+            <div class="button-group">
+                <button class="control-button red-button" onclick="increment('red')">＋</button>
+                <button class="control-button red-button" onclick="decrement('red')">－</button>
+            </div>
+            <div class="yellow-card-section">
+                <button class="yellow-card-button yellow-button" onclick="addYellowCard('red')">＋</button>
+                <div class="yellow-card-display" id="red-yellow-card"></div>
+                <button class="yellow-card-button yellow-button" onclick="removeYellowCard('red')">－</button>
+            </div>
+        </div>
+
+        <!-- タイマー -->
+        <div class="timer-section">
+            <input type="text" id="timer-input" class="timer-input" value="00:30">
+            <div class="timer-controls">
+                <button class="timer-button start-button large-button" onclick="startTimer()">スタート</button>
+                <button class="timer-button stop-button large-button" onclick="stopTimer()">ストップ</button>
+            </div>
+        </div>
+
+        <!-- 青コーナー -->
+        <div class="corner blue-corner">
+            <input type="text" id="blue-player" class="player-input blue-input" placeholder="青コーナー プレイヤー名">
+            <div class="counter-display" id="blue-counter">0</div>
+            <div class="button-group">
+                <button class="control-button blue-button" onclick="increment('blue')">＋</button>
+                <button class="control-button blue-button" onclick="decrement('blue')">－</button>
+            </div>
+            <div class="yellow-card-section">
+                <button class="yellow-card-button yellow-button" onclick="addYellowCard('blue')">＋</button>
+                <div class="yellow-card-display" id="blue-yellow-card"></div>
+                <button class="yellow-card-button yellow-button" onclick="removeYellowCard('blue')">－</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
