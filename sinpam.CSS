@@ -1,0 +1,191 @@
+/* グローバルスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.corner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.player-input {
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.red-input {
+    border-left: 5px solid red;
+}
+
+.blue-input {
+    border-left: 5px solid blue;
+}
+
+.counter-display {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+}
+
+.button-group, .yellow-card-section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.control-button, .yellow-card-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.red-button {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.blue-button {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.yellow-button {
+    background-color: yellow;
+    color: black;
+}
+
+.red-button:hover {
+    background-color: #ff4b4b;
+}
+
+.blue-button:hover {
+    background-color: #3a7bd5;
+}
+
+.yellow-button:hover {
+    background-color: #ffeb3b;
+}
+
+/* タイマー */
+.timer-section {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-input {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.timer-button {
+    padding: 15px 30px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.large-button {
+    font-size: 28px;
+    padding: 20px 40px;
+}
+
+.start-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.start-button:hover {
+    background-color: #218838;
+}
+
+.stop-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.stop-button:hover {
+    background-color: #c82333;
+}
+
+/* イエローカード */
+.yellow-card-display {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.yellow-card {
+    width: 20px;
+    height: 30px;
+    background-color: yellow;
+    border: 1px solid #333;
+    border-radius: 3px;
+}
+
+/* タイマー点滅 */
+.blinking {
+    animation: blink 1s step-start infinite;
+}
+/* タイマー枠点滅 */
+.border-blinking {
+    animation: border-blink 1s step-start infinite;
+}
+
+@keyframes border-blink {
+    0% {
+        border-color: black;
+    }
+    50% {
+        border-color: yellow;
+    }
+    100% {
+        border-color: black;
+    }
+}
