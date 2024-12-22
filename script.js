@@ -161,7 +161,7 @@ function resetApp() {
     document.getElementById('blue-counter').textContent = blueCount;
     document.getElementById('red-player').value = '';
     document.getElementById('blue-player').value = '';
-    document.getElementById('timer-input').value = '00:30';
+    document.getElementById('timer-input').value = '03:00';
     document.getElementById('two-minute-timer').textContent = '02:00';
 
     updateYellowCardDisplay('red');
