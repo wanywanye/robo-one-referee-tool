@@ -1,12 +1,14 @@
+// グローバル変数
 let redCount = 0;
 let blueCount = 0;
 let redYellowCards = 0;
 let blueYellowCards = 0;
-let timer; // 従来のタイマー
-let isRunning = false;
-let totalSeconds = 0;
+let timerInterval, twoMinuteTimerInterval;
+let timeRemaining, twoMinuteTimeRemaining = 120;
 
-// カウンターを増加させる関数
+/**
+ * スコア、イエローカード操作
+ */
 function increment(player) {
     if (player === 'red') {
         redCount++;
@@ -17,7 +19,6 @@ function increment(player) {
     }
 }
 
-// カウンターを減少させる関数
 function decrement(player) {
     if (player === 'red' && redCount > 0) {
         redCount--;
@@ -28,7 +29,6 @@ function decrement(player) {
     }
 }
 
-// イエローカードを追加する関数
 function addYellowCard(player) {
     if (player === 'red') {
         redYellowCards++;
@@ -39,7 +39,6 @@ function addYellowCard(player) {
     }
 }
 
-// イエローカードを削除する関数
 function removeYellowCard(player) {
     if (player === 'red' && redYellowCards > 0) {
         redYellowCards--;
@@ -50,7 +49,6 @@ function removeYellowCard(player) {
     }
 }
 
-// イエローカードの表示を更新する関数
 function updateYellowCardDisplay(player) {
     const yellowCardContainer = document.getElementById(`${player}-yellow-card`);
     yellowCardContainer.innerHTML = '';
@@ -62,53 +60,113 @@ function updateYellowCardDisplay(player) {
     }
 }
 
-// タイマーを開始する関数
-let timerInterval;
-let timeRemaining;
-
+/**
+ * メインタイマー操作
+ */
 function startTimer() {
-    let timeInput = document.getElementById('timer-input').value;
-    let timeParts = timeInput.split(':');
-    timeRemaining = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+    const timerInput = document.getElementById('timer-input').value;
+    const [minutes, seconds] = timerInput.split(':').map(Number);
+    timeRemaining = minutes * 60 + seconds;
 
-    if (!isRunning && timeRemaining > 0) {
-        isRunning = true;
-        timerInterval = setInterval(function() {
-            if (timeRemaining <= 0) {
-                clearInterval(timerInterval);
-                stopBorderBlinking(); // 点滅を停止
-                isRunning = false; // タイマーの状態をリセット
-            } else {
-                timeRemaining--;
-                let minutes = Math.floor(timeRemaining / 60);
-                let seconds = timeRemaining % 60;
-                document.getElementById('timer-input').value = 
-                    (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-
-                // 残り30秒になったら枠を点滅
-                if (timeRemaining === 30) {
-                    startBorderBlinking();
-                }
-            }
-        }, 1000);
+    if (!timerInterval && timeRemaining > 0) {
+        timerInterval = setInterval(updateTimer, 1000);
     }
 }
 
-// タイマーを停止する関数
 function stopTimer() {
     clearInterval(timerInterval);
-    stopBorderBlinking(); // 点滅を停止
-    isRunning = false; // タイマーの状態をリセット
+    timerInterval = null;
+    stopBorderBlinking();
 }
 
-// タイマー枠の点滅を開始する関数
+function updateTimer() {
+    if (timeRemaining > 0) {
+        timeRemaining--;
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        document.getElementById('timer-input').value =
+            String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+
+        if (timeRemaining === 30) {
+            startBorderBlinking();
+        }
+    } else {
+        stopTimer();
+    }
+}
+
 function startBorderBlinking() {
     const timerElement = document.getElementById('timer-input');
     timerElement.classList.add('border-blinking');
 }
 
-// タイマー枠の点滅を停止する関数
 function stopBorderBlinking() {
     const timerElement = document.getElementById('timer-input');
     timerElement.classList.remove('border-blinking');
+}
+
+/**
+ * 2分間タイマー操作
+ */
+function startTwoMinuteTimer() {
+    if (!twoMinuteTimerInterval && twoMinuteTimeRemaining > 0) {
+        twoMinuteTimerInterval = setInterval(updateTwoMinuteTimer, 1000);
+    }
+}
+
+function stopTwoMinuteTimer() {
+    clearInterval(twoMinuteTimerInterval);
+    twoMinuteTimerInterval = null;
+    stopTwoMinuteBorderBlinking();
+}
+
+function updateTwoMinuteTimer() {
+    if (twoMinuteTimeRemaining > 0) {
+        twoMinuteTimeRemaining--;
+        const minutes = Math.floor(twoMinuteTimeRemaining / 60);
+        const seconds = twoMinuteTimeRemaining % 60;
+        document.getElementById('two-minute-timer').textContent =
+            String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+
+        if (twoMinuteTimeRemaining === 30) {
+            startTwoMinuteBorderBlinking();
+        }
+    } else {
+        stopTwoMinuteTimer();
+    }
+}
+
+function startTwoMinuteBorderBlinking() {
+    const timerElement = document.getElementById('two-minute-timer');
+    timerElement.classList.add('border-blinking');
+}
+
+function stopTwoMinuteBorderBlinking() {
+    const timerElement = document.getElementById('two-minute-timer');
+    timerElement.classList.remove('border-blinking');
+}
+
+/**
+ * リセット機能
+ */
+function resetApp() {
+    redCount = 0;
+    blueCount = 0;
+    redYellowCards = 0;
+    blueYellowCards = 0;
+    timeRemaining = 0;
+    twoMinuteTimeRemaining = 120;
+
+    document.getElementById('red-counter').textContent = redCount;
+    document.getElementById('blue-counter').textContent = blueCount;
+    document.getElementById('red-player').value = '';
+    document.getElementById('blue-player').value = '';
+    document.getElementById('timer-input').value = '00:30';
+    document.getElementById('two-minute-timer').textContent = '02:00';
+
+    updateYellowCardDisplay('red');
+    updateYellowCardDisplay('blue');
+
+    stopTimer();
+    stopTwoMinuteTimer();
 }
