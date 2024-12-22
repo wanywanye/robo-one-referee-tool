@@ -5,36 +5,44 @@ body {
     color: #333;
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
+/* 全体のレイアウト */
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 400px;
+    width: 80%;
+    max-width: 1200px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* コーナー設定 */
 .corner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 100%;
+    width: 25%;
+}
+
+.red-corner, .blue-corner {
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .player-input {
     font-size: 16px;
-    padding: 10px;
-    width: 90%;
+    padding: 8px;
+    width: 100%;
+    max-width: 150px;
     border-radius: 5px;
     border: 1px solid #ccc;
     text-align: center;
@@ -49,19 +57,22 @@ body {
 }
 
 .counter-display {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: bold;
     color: #333;
+    text-align: center;
 }
 
-.button-group, .yellow-card-section {
+/* ボタン */
+.button-group {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    margin: 5px 0;
 }
 
 .control-button, .yellow-card-button {
-    padding: 10px 20px;
+    padding: 8px 15px;
     font-size: 18px;
     border: none;
     cursor: pointer;
@@ -79,7 +90,7 @@ body {
     color: white;
 }
 
-.yellow-button {
+.yellow-card-button {
     background-color: yellow;
     color: black;
 }
@@ -92,28 +103,65 @@ body {
     background-color: #3a7bd5;
 }
 
-.yellow-button:hover {
+.yellow-card-button:hover {
     background-color: #ffeb3b;
+}
+
+/* イエローカード */
+.yellow-card-display {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.yellow-card {
+    width: 18px;
+    height: 25px;
+    background-color: yellow;
+    border: 1px solid #333;
+    border-radius: 3px;
 }
 
 /* タイマー */
 .timer-section {
-    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+}
+
+.timer-input {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* 2分間タイマーセクション */
+.two-minute-timer-section {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.timer-input {
-    font-size: 48px;
+#two-minute-timer {
+    font-size: 36px;
     font-weight: bold;
     text-align: center;
     width: 100%;
-    max-width: 300px;
-    padding: 10px;
+    max-width: 200px;
+    padding: 8px;
     border: 2px solid #ccc;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* タイマー枠点滅 */
@@ -133,55 +181,23 @@ body {
     }
 }
 
-.timer-controls {
-    display: flex;
-    gap: 10px;
+/* リセットボタン */
+.reset-section {
+    margin-top: 20px;
 }
 
-.timer-button {
-    padding: 15px 30px;
-    font-size: 24px;
+.reset-button {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    width: 150px;
+    text-align: center;
 }
 
-.large-button {
-    font-size: 28px;
-    padding: 20px 40px;
-}
-
-.start-button {
-    background-color: #28a745;
-    color: white;
-}
-
-.start-button:hover {
-    background-color: #218838;
-}
-
-.stop-button {
-    background-color: #dc3545;
-    color: white;
-}
-
-.stop-button:hover {
-    background-color: #c82333;
-}
-
-/* イエローカード */
-.yellow-card-display {
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-    align-items: center;
-}
-
-.yellow-card {
-    width: 20px;
-    height: 30px;
-    background-color: yellow;
-    border: 1px solid #333;
-    border-radius: 3px;
+.reset-button:hover {
+    background-color: #333;
 }
