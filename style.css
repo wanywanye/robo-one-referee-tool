@@ -16,12 +16,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 }
 
 /* コーナー設定 */
@@ -30,12 +31,13 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    width: 25%;
+    flex: 1;
+    max-width: 300px;
 }
 
 .red-corner, .blue-corner {
-    border-radius: 5px;
     padding: 10px;
+    border-radius: 5px;
 }
 
 .player-input {
@@ -93,6 +95,7 @@ body {
 .yellow-card-button {
     background-color: yellow;
     color: black;
+    font-weight: bold;
 }
 
 .red-button:hover {
@@ -105,6 +108,40 @@ body {
 
 .yellow-card-button:hover {
     background-color: #ffeb3b;
+}
+
+/* スタートボタン */
+.start-button {
+    background-color: #28a745; /* 緑色 */
+    color: white; /* 白い文字 */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-button:hover {
+    background-color: #218838; /* ホバー時の濃い緑 */
+}
+
+/* ストップボタン */
+.stop-button {
+    background-color: #dc3545; /* 赤色 */
+    color: white; /* 白い文字 */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.stop-button:hover {
+    background-color: #c82333; /* ホバー時の濃い赤 */
 }
 
 /* イエローカード */
@@ -130,6 +167,7 @@ body {
     align-items: center;
     gap: 10px;
     width: 30%;
+    max-width: 300px;
 }
 
 .timer-input {
@@ -200,4 +238,42 @@ body {
 
 .reset-button:hover {
     background-color: #333;
+}
+
+/* デバイスサイズに応じたレイアウト変更 */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .corner, .timer-section {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+
+    .timer-section {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .corner {
+        flex: 1;
+        margin: 0 10px;
+        max-width: 250px;
+    }
+
+    .timer-section {
+        width: 40%;
+        max-width: 300px;
+    }
 }
