@@ -8,7 +8,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: 20px;
 }
 
 /* 全体のレイアウト */
@@ -23,6 +24,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    max-height: 110vh; /* 必要に応じて調整 */
 }
 
 /* コーナー設定 */
@@ -112,8 +114,8 @@ body {
 
 /* スタートボタン */
 .start-button {
-    background-color: #28a745; /* 緑色 */
-    color: white; /* 白い文字 */
+    background-color: #28a745;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     padding: 10px 20px;
@@ -124,13 +126,13 @@ body {
 }
 
 .start-button:hover {
-    background-color: #218838; /* ホバー時の濃い緑 */
+    background-color: #218838;
 }
 
 /* ストップボタン */
 .stop-button {
-    background-color: #dc3545; /* 赤色 */
-    color: white; /* 白い文字 */
+    background-color: #dc3545;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     padding: 10px 20px;
@@ -141,7 +143,7 @@ body {
 }
 
 .stop-button:hover {
-    background-color: #c82333; /* ホバー時の濃い赤 */
+    background-color: #c82333;
 }
 
 /* イエローカード */
@@ -177,7 +179,7 @@ body {
     width: 100%;
     max-width: 200px;
     padding: 8px;
-    border: 2px solid #ccc;
+    border: 2px solid #999;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -197,26 +199,20 @@ body {
     width: 100%;
     max-width: 200px;
     padding: 8px;
-    border: 2px solid #ccc;
+    border: 2px solid #999;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 /* タイマー枠点滅 */
 .border-blinking {
-    animation: border-blink 1s step-start infinite;
+    animation: border-blink 0.8s step-start infinite;
 }
 
 @keyframes border-blink {
-    0% {
-        border-color: black;
-    }
-    50% {
-        border-color: yellow;
-    }
-    100% {
-        border-color: black;
-    }
+    0% { border-color: black; }
+    50% { border-color: yellow; }
+    100% { border-color: black; }
 }
 
 /* リセットボタン */
@@ -248,32 +244,12 @@ body {
         width: 100%;
         padding: 10px;
     }
-
     .corner, .timer-section {
         width: 100%;
         max-width: 400px;
         margin-bottom: 20px;
     }
-
     .timer-section {
         margin-top: 10px;
-    }
-}
-
-@media screen and (orientation: landscape) and (max-width: 1024px) {
-    .container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .corner {
-        flex: 1;
-        margin: 0 10px;
-        max-width: 250px;
-    }
-
-    .timer-section {
-        width: 40%;
-        max-width: 300px;
     }
 }
